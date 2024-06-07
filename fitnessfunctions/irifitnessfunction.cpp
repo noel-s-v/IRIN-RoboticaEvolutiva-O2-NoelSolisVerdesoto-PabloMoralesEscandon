@@ -298,7 +298,6 @@ void CIriFitnessFunction::SimulationStep(unsigned int n_simulation_step, double 
 			m_currentColor = true;
 		}
 	}
-	m_currentColor = color;
 }
 
 /******************************************************************************/

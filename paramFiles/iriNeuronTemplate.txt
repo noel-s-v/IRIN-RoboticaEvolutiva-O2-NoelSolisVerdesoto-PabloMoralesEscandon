@@ -73,7 +73,7 @@ NUMBER OF ELITES													= 5
 FITNESS FUNCTION													= 4
 SAMPLES PER CHORMOSOME										= 1
 RANDOM POSITION ORIENTATION (0 NO, 1 YES) = 1
-RANDOM INIT AREA X												= 0.05
+RANDOM INIT AREA X												= 0.6
 RANDOM INIT AREA Y												= 0.05
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

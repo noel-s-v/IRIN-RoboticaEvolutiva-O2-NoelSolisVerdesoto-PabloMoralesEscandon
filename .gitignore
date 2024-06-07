@@ -1,0 +1,12 @@
+*
+!.gitignore
+!experiments/
+!experiments/**
+!fitnessfunctions/
+!fitnessfunctions/**
+!paramFiles/
+!paramFiles/**
+!geneticDataFiles/
+!geneticDataFiles/currentbest
+!geneticDataFiles/fitness.log
+

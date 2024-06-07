@@ -286,8 +286,17 @@ void CIriFitnessFunction::SimulationStep(unsigned int n_simulation_step, double 
 		m_unCollisionsNumber++;		
 
 	double color = *ground;
-	if((color == 0) && (m_currentColor == 1.0)){
-		m_unNumberOfLaps++;
+
+	if(m_currentColor){
+		if (color == 0.5){
+			m_unNumberOfLaps+=0.5;
+			m_currentColor = false;
+		}
+	} else{
+		if(color == 0){
+			m_unNumberOfLaps+=0.5;
+			m_currentColor = true;
+		}
 	}
 	m_currentColor = color;
 }

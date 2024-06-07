@@ -33,7 +33,7 @@ protected:
 		CEpuck* m_pcEpuck;
 		unsigned int m_unCollisionsNumber;
 		unsigned int m_unNumberOfLaps;
-		unsigned int m_currentColor;
+		bool m_currentColor; // Searching for false - Black or true - Grey
 
 };
 

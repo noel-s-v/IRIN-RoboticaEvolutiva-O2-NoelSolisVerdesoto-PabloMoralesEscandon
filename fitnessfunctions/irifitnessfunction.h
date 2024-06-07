@@ -32,7 +32,7 @@ protected:
 		double 			m_fComputedFitness;
 		CEpuck* m_pcEpuck;
 		unsigned int m_unCollisionsNumber;
-		unsigned int m_unNumberOfLaps;
+		double m_unNumberOfLaps;
 		bool m_currentColor; // Searching for false - Black or true - Grey
 
 };

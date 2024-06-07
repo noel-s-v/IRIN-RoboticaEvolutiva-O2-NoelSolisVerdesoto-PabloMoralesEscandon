@@ -32,6 +32,8 @@ protected:
 		double 			m_fComputedFitness;
 		CEpuck* m_pcEpuck;
 		unsigned int m_unCollisionsNumber;
+		unsigned int m_unNumberOfLaps;
+		unsigned inr m_currentColor;
 
 };
 

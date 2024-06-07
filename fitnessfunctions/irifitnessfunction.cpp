@@ -31,6 +31,8 @@ CIriFitnessFunction::CIriFitnessFunction(const char* pch_name,
 	m_unNumberOfSteps = 0;
 	m_fComputedFitness = 0.0;
 	m_unCollisionsNumber 	= 0;
+	m_unNumberOfLaps = 0;
+	m_currentColor = 0;
 
 }
 
@@ -50,7 +52,7 @@ double CIriFitnessFunction::GetFitness()
 	int coll = (CCollisionManager::GetInstance()->GetTotalNumberOfCollisions());
 
 	/* Get the fitness divided by the number of steps */
-	double fit = ( m_fComputedFitness / (double) m_unNumberOfSteps ) * (1 - ((double) (fmin(coll,10.0)/10.0)));
+	double fit = ( m_fComputedFitness / (double) m_unNumberOfSteps ) * (1 - ((double) (fmin(coll,10.0)/10.0))) * ((double) (fmin(m_unNumberOfLaps,4.0)/4.0));
 
 	/* If fitness less than 0, put it to 0 */
 	if ( fit < 0.0 ) fit = 0.0;
@@ -262,25 +264,16 @@ void CIriFitnessFunction::SimulationStep(unsigned int n_simulation_step, double 
 
 
 	double fitness = 1.0;
-    double col = 0;
 
 	/* Eval maximum speed partial fitness */
     maxSpeedEval = (fabs(leftSpeed - 0.5) + fabs(rightSpeed - 0.5));
-   if(m_unCollisionsNumber < 10)
-   {
-       col = 1 - m_unCollisionsNumber/10;
-   }
-   else
-   {
-       col = 0;
-   }
     /*Eval correct orientation*/
     double light = 0.7*lightS2 + 0.1*lightS3 + 0.2*lightS1;
 
 	/* Eval same direction partial fitness */
 	// double sameDirectionEval = 1 - sqrt(fabs(leftSpeed - rightSpeed));
 	
-    fitness =  light * maxSpeedEval * col * sameDirectionEval * (leftSpeed * rightSpeed);
+    fitness =  light * maxSpeedEval * sameDirectionEval * (leftSpeed * rightSpeed);
 	
 	
 	/* TO HERE YOU NEED TO CREATE YOU FITNESS */	
@@ -292,6 +285,11 @@ void CIriFitnessFunction::SimulationStep(unsigned int n_simulation_step, double 
 	if ( maxContactSensorEval == 1 )
 		m_unCollisionsNumber++;		
 
+	double color = ground*;
+	if((color == 0) && (m_currentColor == 1.0)){
+		m_unNumberOfLaps++;
+	}
+	m_currentColor = color;
 }
 
 /******************************************************************************/

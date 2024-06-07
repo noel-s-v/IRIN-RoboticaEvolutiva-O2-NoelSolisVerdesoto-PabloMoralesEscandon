@@ -262,25 +262,15 @@ void CIriFitnessFunction::SimulationStep(unsigned int n_simulation_step, double 
 
 
 	double fitness = 1.0;
-    double col = 0;
-
 	/* Eval maximum speed partial fitness */
     maxSpeedEval = (fabs(leftSpeed - 0.5) + fabs(rightSpeed - 0.5));
-   if(m_unCollisionsNumber < 10)
-   {
-       col = 1 - m_unCollisionsNumber/10;
-   }
-   else
-   {
-       col = 0;
-   }
     /*Eval correct orientation*/
     double light = 0.7*lightS2 + 0.1*lightS3 + 0.2*lightS1;
 
 	/* Eval same direction partial fitness */
 	// double sameDirectionEval = 1 - sqrt(fabs(leftSpeed - rightSpeed));
 	
-    fitness =  light * maxSpeedEval * col * sameDirectionEval * (leftSpeed * rightSpeed);
+    fitness =  light * maxSpeedEval * sameDirectionEval * (leftSpeed * rightSpeed);
 	
 	
 	/* TO HERE YOU NEED TO CREATE YOU FITNESS */	

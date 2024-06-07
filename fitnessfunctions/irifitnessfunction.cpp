@@ -285,7 +285,7 @@ void CIriFitnessFunction::SimulationStep(unsigned int n_simulation_step, double 
 	if ( maxContactSensorEval == 1 )
 		m_unCollisionsNumber++;		
 
-	double color = ground*;
+	double color = *ground;
 	if((color == 0) && (m_currentColor == 1.0)){
 		m_unNumberOfLaps++;
 	}

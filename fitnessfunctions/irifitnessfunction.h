@@ -23,17 +23,18 @@ class CIriFitnessFunction : public CFitnessFunction
 public:
     CIriFitnessFunction(const char* pch_name, CSimulator* pc_simulator,
                                     unsigned int un_collisions_allowed_per_epuck);
-		~CIriFitnessFunction();
+~CIriFitnessFunction();
     virtual double GetFitness();
-		virtual void SimulationStep(unsigned int n_simulation_step, double f_time, double f_step_interval);
+virtual void SimulationStep(unsigned int n_simulation_step, double f_time, double f_step_interval);
 
 protected:
-		unsigned int m_unNumberOfSteps;
-		double 			m_fComputedFitness;
-		CEpuck* m_pcEpuck;
-		unsigned int m_unCollisionsNumber;
-		double m_unNumberOfLaps;
-		bool m_currentColor; // Searching for false - Black or true - Grey
+unsigned int m_unNumberOfSteps;
+double m_fComputedFitness;
+CEpuck* m_pcEpuck;
+unsigned int m_unCollisionsNumber;
+double m_unNumberOfLaps;
+bool m_currentColor; // Searching for false - Black or true - Grey
+int m_fTimesOrientedToRed;
 
 };
 

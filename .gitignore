@@ -8,5 +8,6 @@
 !paramFiles/**
 !geneticDataFiles/
 !geneticDataFiles/currentbest
+!objects/
+!objects/redlightobject.cpp
 !geneticDataFiles/fitness.log
-

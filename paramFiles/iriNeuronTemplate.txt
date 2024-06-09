@@ -38,7 +38,7 @@ GROUND AREA 1 COLOR (0.0 Black, 0.5 Grey) = 0.0
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 LIGHT SENSOR RANGE (meters)						= 2.0
-BLUE LIGHT SENSOR RANGE (meters)			= 1.0
+BLUE LIGHT SENSOR RANGE (meters)			= 0.10
 RED LIGHT SENSOR RANGE (meters)				= 0.7
 BATTERY SENSOR RANGE (meters)					= 0.5
 BATTERY CHARGE COEF 									= 0.01
@@ -48,7 +48,7 @@ BLUE BATTERY CHARGE COEF 							= 0.01
 BLUE BATTERY DISCHARGE COEF						= 0.00000001
 RED BATTERY SENSOR RANGE (meters)			= 0.75
 RED BATTERY CHARGE COEF 							= 0.01
-RED BATTERY DISCHARGE COEF						= 0.0001
+RED BATTERY DISCHARGE COEF						= 0.0
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%% MORPHOLOGY %%%%%%%%%%%%%%%%%%%%%%

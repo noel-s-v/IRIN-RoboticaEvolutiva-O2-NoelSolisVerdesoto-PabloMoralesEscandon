@@ -53,7 +53,7 @@ double CIriFitnessFunction::GetFitness()
 	int coll = (CCollisionManager::GetInstance()->GetTotalNumberOfCollisions());
 
 	/* Get the fitness divided by the number of steps */
-	double fit = ( m_fComputedFitness / (double) m_unNumberOfSteps ) * (1 - ((double) (fmin(coll,10.0)/10.0))) * (1 - ((double) (fmin(m_fTimesOrientedToRed, 100.0)/100.0))) * ((double) (fmax(m_unNumberOfLaps,4.0)/4.0));
+	double fit = ( m_fComputedFitness / (double) m_unNumberOfSteps ) * (1 - ((double) (fmin(coll,10.0)/10.0))) * (1 - ((double) (fmin(m_fTimesOrientedToRed, 30.0)/30.0))) * ((double) (fmax(m_unNumberOfLaps,4.0)/4.0));
 
 	/* If fitness less than 0, put it to 0 */
 	if ( fit < 0.0 ) fit = 0.0;
@@ -113,6 +113,12 @@ void CIriFitnessFunction::SimulationStep(unsigned int n_simulation_step, double 
 	double blueLightS0=0;
 	double blueLightS7=0;
 	double redLightS0=0;
+	double redLightS1=0;
+	double redLightS2=0;
+	double redLightS3=0;
+	double redLightS4=0;
+	double redLightS5=0;
+	double redLightS6=0;
 	double redLightS7=0;
 	double lightS0=0;
 	double lightS1=0;
@@ -228,6 +234,18 @@ void CIriFitnessFunction::SimulationStep(unsigned int n_simulation_step, double 
 					}
 					if (j==0)
 						redLightS0 = pfThisSensorInputs[j];
+					else if (j==1)
+						redLightS1 = pfThisSensorInputs[j];
+					else if (j==2)
+						redLightS2 = pfThisSensorInputs[j];
+					else if (j==3)
+						redLightS3 = pfThisSensorInputs[j];
+					else if (j==4)
+						redLightS4 = pfThisSensorInputs[j];
+					else if (j==5)
+						redLightS5 = pfThisSensorInputs[j];
+					else if (j==6)
+						redLightS6 = pfThisSensorInputs[j];
 					else if (j==7)
 						redLightS7 = pfThisSensorInputs[j];
 			

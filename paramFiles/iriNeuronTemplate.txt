@@ -3,10 +3,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 NUMBER OF ROBOTS								= 1	
-ROBOT 1: X POSITION (meters)		= 0.0
-ROBOT 1: Y POSITION (meters)		= 0.0
+ROBOT 1: X POSITION (meters)		= -1.35
+ROBOT 1: Y POSITION (meters)		= -0.675
 ROBOT 1: ORIENTATION (radians) 	= 3.15
-WRITE TO FILE (0 No, 1 YES )		= 1
+WRITE TO FILE (0 No, 1 YES )		= -1.57
 RUN TIME													= 10000
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -46,9 +46,9 @@ BATTERY DISCHARGE COEF								= 0.0001
 BLUE BATTERY SENSOR RANGE (meters)		= 0.5
 BLUE BATTERY CHARGE COEF 							= 0.01
 BLUE BATTERY DISCHARGE COEF						= 0.00000001
-RED BATTERY SENSOR RANGE (meters)			= 0.75
-RED BATTERY CHARGE COEF 							= 0.01
-RED BATTERY DISCHARGE COEF						= 0.0
+RED BATTERY SENSOR RANGE (meters)			= 0.35
+RED BATTERY CHARGE COEF 							= 0.05
+RED BATTERY DISCHARGE COEF						= 0.004
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%% MORPHOLOGY %%%%%%%%%%%%%%%%%%%%%%
@@ -68,7 +68,7 @@ GROUND SENSORS USED     (3 sensors: 0 OFF, 1 ON)  = 1 1 1
 CHROMOSOME LENGTH 												= 130
 POPULATION SIZE														= 100
 NUMBER OF GENERATIONS											= 10000		
-EVALUATION TIME														= 200
+EVALUATION TIME														= 350
 DO CROSSOVER ( 0 No, 1 Yes )							= 1
 NUMBER OF CROSSOVERS ( Always 1 ) 				= 1
 CROSSOVER DISTANCE 	 ( Always 1 ) 				= 1

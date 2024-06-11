@@ -294,7 +294,7 @@ void CIriFitnessFunction::SimulationStep(unsigned int n_simulation_step, double 
 	/* Eval maximum speed partial fitness */
     maxSpeedEval = (fabs(leftSpeed - 0.5) + fabs(rightSpeed - 0.5));
     /*Eval correct orientation*/
-    double light = 0.7*lightS2 + 0.1*lightS3 + 0.2*lightS1;
+    double light = 0.5*lightS2 + 0.3*lightS3 + 0.5*lightS1;
 
 	double redLight = 0.5*redLightS0 + 0.5*redLightS7;
 

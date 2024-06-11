@@ -254,7 +254,7 @@ void CIriFitnessFunction::SimulationStep(unsigned int n_simulation_step, double 
 
 			/* If sensor is BATTERY */
 			case SENSOR_BATTERY:
-         battery = (*i)->GetComputedSensorReadings();
+         		battery = (*i)->GetComputedSensorReadings();
 				 break;
 			
 			case SENSOR_BLUE_BATTERY:
@@ -296,12 +296,27 @@ void CIriFitnessFunction::SimulationStep(unsigned int n_simulation_step, double 
     /*Eval correct orientation*/
     double light = 0.7*lightS2 + 0.1*lightS3 + 0.2*lightS1;
 
-	double redLight = 0.5*redLightS0 + 0.5*redLightS7;
+	double redLight = 0.4*redLightS0 + 0.4*redLightS7 ;
+
+	double Rbattery = redBattery[0];
+
+	if(Rbattery < 0.3){
+		redLight = fmax(redLight,0.1);
+
+	} else{
+		if(redLight > 0.3){
+			m_fTimesOrientedToRed++;
+		}
+		// redLight = 1 - (0.8*redLight);
+		Rbattery = 1.0;
+	}
+
+	// Podriamos poner un flag y que si se queda sin batería lo penalizamos o mantener este método que haría que cuando está sin batería no sume fitness
 
 	/* Eval same direction partial fitness */
 	// double sameDirectionEval = 1 - sqrt(fabs(leftSpeed - rightSpeed));
 	
-    fitness =  light * maxSpeedEval * sameDirectionEval * (leftSpeed * rightSpeed);
+    fitness =  light * maxSpeedEval * sameDirectionEval * (leftSpeed * rightSpeed) * Rbattery; //* redLight;
 	
 	
 	/* TO HERE YOU NEED TO CREATE YOU FITNESS */	

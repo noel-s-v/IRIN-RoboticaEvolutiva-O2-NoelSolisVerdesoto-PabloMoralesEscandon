@@ -294,22 +294,27 @@ void CIriFitnessFunction::SimulationStep(unsigned int n_simulation_step, double 
 	/* Eval maximum speed partial fitness */
     maxSpeedEval = (fabs(leftSpeed - 0.5) + fabs(rightSpeed - 0.5));
     /*Eval correct orientation*/
-    double light = 0.4*lightS2 + 0.4*lightS3 + 0.4*lightS1;
+    double light = 0.5*lightS2 + 0.3*lightS3 + 0.5*lightS1;
 
-	double redLight = 0.5*redLightS0 + 0.5*redLightS7;
+	double BatsuRedLight = 0.4*redLightS0 + 0.4*redLightS7;
+	double redLight = 0.3*redLightS0 +0.3*redLightS1 +0.2*redLightS2 + 0.2*redLightS7 + 0.2*redLightS6 + 0.2*redLightS5;
+
 
 	/* Eval same direction partial fitness */
 	// double sameDirectionEval = 1 - sqrt(fabs(leftSpeed - rightSpeed));
 	
     fitness =  light * maxSpeedEval * sameDirectionEval * (leftSpeed * rightSpeed);
-	
+	if(redBattery[0]<0.5 && redLight > 0.3)
+		fitness += 0.7;
+
+
 	
 	/* TO HERE YOU NEED TO CREATE YOU FITNESS */	
 
 	m_unNumberOfSteps++;
 	m_fComputedFitness += fitness;
 
-	if(redLight > 0.3)
+	if(BatsuRedLight > 0.3 && redBattery[0]>0.6)
 		m_fTimesOrientedToRed++;
 
 
@@ -320,12 +325,12 @@ void CIriFitnessFunction::SimulationStep(unsigned int n_simulation_step, double 
 
 	double color = ground[0];
 	if(m_currentColor){
-		if (color == 0.5){
+		if ((color == 0.5)&&(redBattery[0]>0.4)){
 			m_unNumberOfLaps+=0.5;
 			m_currentColor = false;
 		}
 	} else{
-		if(color == 0){
+		if((color == 0)&&(redBattery[0]>0.4)){
 			m_unNumberOfLaps+=0.5;
 			m_currentColor = true;
 		}

@@ -298,18 +298,22 @@ void CIriFitnessFunction::SimulationStep(unsigned int n_simulation_step, double 
 
 	double redLight = 0.5*redLightS0 + 0.5*redLightS7;
 
+
 	/* Eval same direction partial fitness */
 	// double sameDirectionEval = 1 - sqrt(fabs(leftSpeed - rightSpeed));
 	
     fitness =  light * maxSpeedEval * sameDirectionEval * (leftSpeed * rightSpeed);
-	
+	if(redBattery[0]<0.3 && redLight > 0.3)
+		fitness += 1;
+
+
 	
 	/* TO HERE YOU NEED TO CREATE YOU FITNESS */	
 
 	m_unNumberOfSteps++;
 	m_fComputedFitness += fitness;
 
-	if(redLight > 0.3)
+	if(redLight > 0.3 && redBattery[0]>0.4)
 		m_fTimesOrientedToRed++;
 
 

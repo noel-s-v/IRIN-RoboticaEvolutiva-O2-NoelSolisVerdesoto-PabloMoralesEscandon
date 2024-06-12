@@ -302,7 +302,7 @@ void CIriFitnessFunction::SimulationStep(unsigned int n_simulation_step, double 
 	double batteryCoefficient = 1.0;
 
 	if(redLight>0.5 && blueLight>0.2){
-		if(redBattery[0]<0.5){
+		if(redBattery[0]<0.2){
 			correctOrientation = 4.0;
 		} else{
 			correctOrientation = 0.0;

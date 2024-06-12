@@ -35,6 +35,7 @@ unsigned int m_unCollisionsNumber;
 double m_unNumberOfLaps;
 bool m_currentColor; // Searching for false - Black or true - Grey
 int m_fTimesOrientedToRed;
+int m_fTimesOrientedToBlue;
 
 };
 

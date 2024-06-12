@@ -34,7 +34,7 @@ CIriFitnessFunction::CIriFitnessFunction(const char* pch_name,
 	m_unNumberOfLaps = 0;
 	m_currentColor = 0;
 	m_fTimesOrientedToRed = 0;
-
+	m_fTimesOrientedToBlue = 0;
 }
 
 /******************************************************************************/
@@ -53,7 +53,9 @@ double CIriFitnessFunction::GetFitness()
 	int coll = (CCollisionManager::GetInstance()->GetTotalNumberOfCollisions());
 
 	/* Get the fitness divided by the number of steps */
-	double fit = ( m_fComputedFitness / (double) m_unNumberOfSteps ) * (1 - ((double) (fmin(coll,10.0)/10.0))) * (1 - ((double) (fmin(m_fTimesOrientedToRed, 30.0)/30.0))) * ((double) (fmax(m_unNumberOfLaps,4.0)/4.0));
+	double fit = ( m_fComputedFitness / (double) m_unNumberOfSteps ) * (1 - ((double) (fmin(coll,10.0)/10.0))) * (1 - ((double) (fmin(m_fTimesOrientedToRed, 30.0)/30.0))) 
+	* (1 - ((double) (fmin(m_fTimesOrientedToRed, 30.0)/30.0))) 
+	* ((double) (fmax(m_unNumberOfLaps,4.0)/4.0));
 
 	/* If fitness less than 0, put it to 0 */
 	if ( fit < 0.0 ) fit = 0.0;
@@ -298,6 +300,7 @@ void CIriFitnessFunction::SimulationStep(unsigned int n_simulation_step, double 
 
 	double BatsuRedLight = 0.4*redLightS0 + 0.4*redLightS7;
 	double redLight = 0.3*redLightS0 +0.3*redLightS1 +0.2*redLightS2 + 0.2*redLightS7 + 0.2*redLightS6 + 0.2*redLightS5;
+	double BackRedLight = 0.4*redLightS3 + 0.4*redLightS4;
 
 
 	/* Eval same direction partial fitness */
@@ -313,6 +316,11 @@ void CIriFitnessFunction::SimulationStep(unsigned int n_simulation_step, double 
 
 	m_unNumberOfSteps++;
 	m_fComputedFitness += fitness;
+
+
+	if(blueLightS7 > 0.4 && BackRedLight < 0.3)
+		m_fTimesOrientedToBlue++;
+
 
 	if(BatsuRedLight > 0.3 && redBattery[0]>0.6)
 		m_fTimesOrientedToRed++;

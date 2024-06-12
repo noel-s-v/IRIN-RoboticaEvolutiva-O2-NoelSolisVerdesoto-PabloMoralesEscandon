@@ -47,8 +47,8 @@ BLUE BATTERY SENSOR RANGE (meters)		= 0.5
 BLUE BATTERY CHARGE COEF 							= 0.01
 BLUE BATTERY DISCHARGE COEF						= 0.00000001
 RED BATTERY SENSOR RANGE (meters)			= 0.35
-RED BATTERY CHARGE COEF 							= 0.01
-RED BATTERY DISCHARGE COEF						= 0.004
+RED BATTERY CHARGE COEF 							= 0.4
+RED BATTERY DISCHARGE COEF						= 0.007
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%% MORPHOLOGY %%%%%%%%%%%%%%%%%%%%%%

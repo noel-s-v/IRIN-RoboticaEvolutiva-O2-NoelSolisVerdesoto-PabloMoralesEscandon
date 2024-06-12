@@ -296,7 +296,7 @@ void CIriFitnessFunction::SimulationStep(unsigned int n_simulation_step, double 
     /*Eval correct orientation*/
     double light = 0.5*lightS2 + 0.3*lightS3 + 0.5*lightS1;
 
-	double BatsuRedLight = 0.4*redLightS0 + 0.4*redLightS7;
+	double BatsuRedLight = 0.4*redLightS0 + 0.4*redLightS7+0.2*redLightS3 + 0.2*redLightS4;
 	double redLight = 0.3*redLightS0 +0.3*redLightS1 +0.2*redLightS2 + 0.2*redLightS7 + 0.2*redLightS6 + 0.2*redLightS5;
 
 

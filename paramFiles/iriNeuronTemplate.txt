@@ -39,16 +39,16 @@ GROUND AREA 1 COLOR (0.0 Black, 0.5 Grey) = 0.0
 
 LIGHT SENSOR RANGE (meters)						= 2.0
 BLUE LIGHT SENSOR RANGE (meters)			= 0.30
-RED LIGHT SENSOR RANGE (meters)				= 0.7
+RED LIGHT SENSOR RANGE (meters)				= 0.85
 BATTERY SENSOR RANGE (meters)					= 0.5
 BATTERY CHARGE COEF 									= 0.01
 BATTERY DISCHARGE COEF								= 0.0001
 BLUE BATTERY SENSOR RANGE (meters)		= 0.5
 BLUE BATTERY CHARGE COEF 							= 0.01
 BLUE BATTERY DISCHARGE COEF						= 0.00000001
-RED BATTERY SENSOR RANGE (meters)			= 0.75
+RED BATTERY SENSOR RANGE (meters)			= 0.35
 RED BATTERY CHARGE COEF 							= 0.01
-RED BATTERY DISCHARGE COEF						= 0.0025
+RED BATTERY DISCHARGE COEF						= 0.004
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%% MORPHOLOGY %%%%%%%%%%%%%%%%%%%%%%
@@ -67,7 +67,7 @@ GROUND SENSORS USED     (3 sensors: 0 OFF, 1 ON)  = 1 1 1
 
 CHROMOSOME LENGTH 												= 182
 POPULATION SIZE														= 135
-NUMBER OF GENERATIONS											= 10000		
+NUMBER OF GENERATIONS											= 100000		
 EVALUATION TIME														= 200
 DO CROSSOVER ( 0 No, 1 Yes )							= 1
 NUMBER OF CROSSOVERS ( Always 1 ) 				= 1

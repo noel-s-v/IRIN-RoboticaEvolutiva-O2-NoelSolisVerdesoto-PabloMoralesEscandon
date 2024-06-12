@@ -54,7 +54,7 @@ double CIriFitnessFunction::GetFitness()
 
 	/* Get the fitness divided by the number of steps */
 	double fit = ( m_fComputedFitness / (double) m_unNumberOfSteps ) * (1 - ((double) (fmin(coll,10.0)/10.0))) * (1 - ((double) (fmin(m_fTimesOrientedToRed, 30.0)/30.0))) 
-	* (1 - ((double) (fmin(m_fTimesOrientedToRed, 30.0)/30.0))) 
+	* (1 - ((double) (fmin(m_fTimesOrientedToBlue, 30.0)/30.0))) 
 	* ((double) (fmax(m_unNumberOfLaps,4.0)/4.0));
 
 	/* If fitness less than 0, put it to 0 */

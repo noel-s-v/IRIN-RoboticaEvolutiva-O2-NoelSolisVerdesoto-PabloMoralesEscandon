@@ -53,9 +53,8 @@ double CIriFitnessFunction::GetFitness()
 	int coll = (CCollisionManager::GetInstance()->GetTotalNumberOfCollisions());
 
 	/* Get the fitness divided by the number of steps */
-	double fit = ( m_fComputedFitness / (double) m_unNumberOfSteps ) * (1 - ((double) (fmin(coll,10.0)/10.0))) * (1 - ((double) (fmin(m_fTimesOrientedToRed, 30.0)/30.0))) 
-	* (1 - ((double) (fmin(m_fTimesOrientedToRed, 30.0)/30.0))) 
-	* ((double) (fmax(m_unNumberOfLaps,4.0)/4.0));
+	double fit = ( m_fComputedFitness / (double) m_unNumberOfSteps ) * (1 - ((double) (fmin(coll,10.0)/10.0)))
+	* (m_unNumberOfLaps/4.0);
 
 	/* If fitness less than 0, put it to 0 */
 	if ( fit < 0.0 ) fit = 0.0;
@@ -297,18 +296,22 @@ void CIriFitnessFunction::SimulationStep(unsigned int n_simulation_step, double 
     maxSpeedEval = (fabs(leftSpeed - 0.5) + fabs(rightSpeed - 0.5));
     /*Eval correct orientation*/
     double light = 0.5*lightS2 + 0.3*lightS3 + 0.5*lightS1;
+	double redLight = 0.5*redLightS0 + 0.5*redLightS7;
+	double blueLight = 0.5*blueLightS0 + 0.5*blueLightS7;
+	double correctOrientation = 1.0;
 
-	double BatsuRedLight = 0.4*redLightS0 + 0.4*redLightS7;
-	double redLight = 0.3*redLightS0 +0.3*redLightS1 +0.2*redLightS2 + 0.2*redLightS7 + 0.2*redLightS6 + 0.2*redLightS5;
-	double BackRedLight = 0.4*redLightS3 + 0.4*redLightS4;
-
+	if(redLight>0.5 && blueLight>0.2){
+		if(redBattery[0]<0.5){
+			correctOrientation = 4.0;
+		} else{
+			correctOrientation = 0.0;
+		}
+	}
 
 	/* Eval same direction partial fitness */
 	// double sameDirectionEval = 1 - sqrt(fabs(leftSpeed - rightSpeed));
 	
-    fitness =  light * maxSpeedEval * sameDirectionEval * (leftSpeed * rightSpeed);
-	if(redBattery[0]<0.5 && redLight > 0.3)
-		fitness += 0.7;
+    fitness =  light * maxSpeedEval * sameDirectionEval * (leftSpeed * rightSpeed) * correctOrientation;
 
 
 	
@@ -318,14 +321,6 @@ void CIriFitnessFunction::SimulationStep(unsigned int n_simulation_step, double 
 	m_fComputedFitness += fitness;
 
 
-	if(blueLightS7 > 0.4 && BackRedLight < 0.3)
-		m_fTimesOrientedToBlue++;
-
-
-	if(BatsuRedLight > 0.3 && redBattery[0]>0.6)
-		m_fTimesOrientedToRed++;
-
-
 	/* Get Collisions */
 	if ( maxContactSensorEval == 1 )
 		m_unCollisionsNumber++;		
@@ -333,12 +328,12 @@ void CIriFitnessFunction::SimulationStep(unsigned int n_simulation_step, double 
 
 	double color = ground[0];
 	if(m_currentColor){
-		if ((color == 0.5)&&(redBattery[0]>0.4)){
+		if ((color == 0.5)&&(redBattery[0]>0.1)){
 			m_unNumberOfLaps+=0.5;
 			m_currentColor = false;
 		}
 	} else{
-		if((color == 0)&&(redBattery[0]>0.4)){
+		if((color == 0)&&(redBattery[0]>0.1)){
 			m_unNumberOfLaps+=0.5;
 			m_currentColor = true;
 		}

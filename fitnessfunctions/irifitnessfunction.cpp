@@ -299,6 +299,7 @@ void CIriFitnessFunction::SimulationStep(unsigned int n_simulation_step, double 
 	double redLight = 0.5*redLightS0 + 0.5*redLightS7;
 	double blueLight = 0.5*blueLightS0 + 0.5*blueLightS7;
 	double correctOrientation = 1.0;
+	double batteryCoefficient = 1.0;
 
 	if(redLight>0.5 && blueLight>0.2){
 		if(redBattery[0]<0.5){
@@ -308,10 +309,14 @@ void CIriFitnessFunction::SimulationStep(unsigned int n_simulation_step, double 
 		}
 	}
 
+	if(redBattery[0]<0.2){
+		batteryCoefficient = redBattery[0];
+	}
+
 	/* Eval same direction partial fitness */
 	// double sameDirectionEval = 1 - sqrt(fabs(leftSpeed - rightSpeed));
 	
-    fitness =  light * maxSpeedEval * sameDirectionEval * (leftSpeed * rightSpeed) * correctOrientation;
+    fitness =  light * maxSpeedEval * sameDirectionEval * (leftSpeed * rightSpeed) * correctOrientation * batteryCoefficient;
 
 
 	

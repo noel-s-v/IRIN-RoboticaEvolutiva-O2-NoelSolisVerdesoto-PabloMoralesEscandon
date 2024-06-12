@@ -55,7 +55,7 @@ double CIriFitnessFunction::GetFitness()
 	/* Get the fitness divided by the number of steps */
 	double fit = ( m_fComputedFitness / (double) m_unNumberOfSteps ) * (1 - ((double) (fmin(coll,10.0)/10.0))) * (1 - ((double) (fmin(m_fTimesOrientedToRed, 30.0)/30.0))) 
 	* (1 - ((double) (fmin(m_fTimesOrientedToRed, 30.0)/30.0))) 
-	* ((double) (fmax(m_unNumberOfLaps,4.0)/4.0));
+	* ((double) (fmax(m_unNumberOfLaps,3.0)/3.0));
 
 	/* If fitness less than 0, put it to 0 */
 	if ( fit < 0.0 ) fit = 0.0;
@@ -318,11 +318,11 @@ void CIriFitnessFunction::SimulationStep(unsigned int n_simulation_step, double 
 	m_fComputedFitness += fitness;
 
 
-	if(blueLightS7 > 0.4 && BackRedLight < 0.3)
+	if(blueLightS7 > 0.75 && BackRedLight < 0.3)
 		m_fTimesOrientedToBlue++;
 
 
-	if(BatsuRedLight > 0.3 && redBattery[0]>0.6)
+	if(BatsuRedLight > 0.3 && redBattery[0]>0.9)
 		m_fTimesOrientedToRed++;
 
 
@@ -333,12 +333,12 @@ void CIriFitnessFunction::SimulationStep(unsigned int n_simulation_step, double 
 
 	double color = ground[0];
 	if(m_currentColor){
-		if ((color == 0.5)&&(redBattery[0]>0.4)){
+		if ((color == 0.5)&&(redBattery[0]>0.2)){
 			m_unNumberOfLaps+=0.5;
 			m_currentColor = false;
 		}
 	} else{
-		if((color == 0)&&(redBattery[0]>0.4)){
+		if((color == 0)&&(redBattery[0]>0.2)){
 			m_unNumberOfLaps+=0.5;
 			m_currentColor = true;
 		}

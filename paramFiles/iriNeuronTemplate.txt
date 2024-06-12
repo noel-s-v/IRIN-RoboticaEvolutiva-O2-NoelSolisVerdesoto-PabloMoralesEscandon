@@ -65,20 +65,21 @@ GROUND SENSORS USED     (3 sensors: 0 OFF, 1 ON)  = 1 1 1
 %%%%%%%%%%%% GENETIC %%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-CHROMOSOME LENGTH 												= 130
-POPULATION SIZE														= 100
+
+CHROMOSOME LENGTH 												= 182
+POPULATION SIZE														= 135
 NUMBER OF GENERATIONS											= 100000		
 EVALUATION TIME														= 200
 DO CROSSOVER ( 0 No, 1 Yes )							= 1
 NUMBER OF CROSSOVERS ( Always 1 ) 				= 1
 CROSSOVER DISTANCE 	 ( Always 1 ) 				= 1
-MUTATION RATE															= 0.3
+MUTATION RATE															= 0.33
 NUMBER OF ELITES													= 5
 FITNESS FUNCTION													= 4
 SAMPLES PER CHORMOSOME										= 1
-RANDOM POSITION ORIENTATION (0 NO, 1 YES) = 0
-RANDOM INIT AREA X												= 0.3
-RANDOM INIT AREA Y												= 0.25
+RANDOM POSITION ORIENTATION (0 NO, 1 YES) = 1
+RANDOM INIT AREA X												= 0.4
+RANDOM INIT AREA Y												= 0.3
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%% NEURAL %%%%%%%%%%%%%%%%%%%%%%%%
@@ -116,6 +117,6 @@ RELATION LAYER 1 	= 0 0 0 0 0 0 0 1
 RELATION LAYER 2 	= 0 0 0 0 0 1 0 0
 RELATION LAYER 3 	= 0 0 0 0 0 1 1 0
 RELATION LAYER 4 	= 0 0 0 0 0 0 1 0
-RELATION LAYER 4 	= 0 0 0 0 0 0 0 1
-RELATION LAYER 4 	= 0 0 0 0 0 0 0 1
-RELATION LAYER 5 	= 0 0 0 0 0 0 0 0
+RELATION LAYER 5 	= 0 0 0 0 0 1 0 1
+RELATION LAYER 6 	= 0 0 0 0 0 0 1 1
+RELATION LAYER 7 	= 0 0 0 0 0 0 0 0
